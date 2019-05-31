@@ -152,7 +152,7 @@ class DropboxMan{
     
   private:
     String _token;
-    
+    WiFiClientSecure client;
 };
 
 #endif

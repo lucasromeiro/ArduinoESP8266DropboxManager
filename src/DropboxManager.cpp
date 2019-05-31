@@ -162,7 +162,7 @@ https://github.com/lucasromeiro/DropboxManager
 #define content_type_urlencoded "Content-Type: application/x-www-form-urlencoded\r\n"
 
 DropboxMan::DropboxMan(){
-
+	client.setInsecure();   // Add this if you are using latest Arduino Firmware
 }
 
 void DropboxMan::begin(String token){
@@ -197,7 +197,7 @@ String DropboxMan::getToken(String code){
     return "FAIL: Big code!";
   }
   
-  WiFiClientSecure client;
+  
   //WiFiClientSecure *client= new WiFiClientSecure;
   #ifdef debug_mode
     debug_mode.println("Connecting to Dropbox...");
@@ -273,7 +273,7 @@ bool DropboxMan::fileUpload(String localFile, String address, bool type){
   }else{
     _mode="add";
   }
-  WiFiClientSecure client;
+  
   //WiFiClientSecure *client= new WiFiClientSecure;
   #ifdef debug_mode
     debug_mode.println("Connecting to Dropbox...");
@@ -375,7 +375,7 @@ bool DropboxMan::stringUpload(String data, String address, bool type){
   }else{
     _mode="add";
   }
-  WiFiClientSecure client;
+  
   #ifdef debug_mode
     debug_mode.println("Connecting to Dropbox...");
   #endif
@@ -442,7 +442,7 @@ bool DropboxMan::stringUpload(String data, String address, bool type){
 bool DropboxMan::fileDownload(String localFile, String address, bool type){
   
 
-  WiFiClientSecure client;
+  
   //WiFiClientSecure *client= new WiFiClientSecure;
   #ifdef debug_mode
     debug_mode.println("Connecting to Dropbox...");
